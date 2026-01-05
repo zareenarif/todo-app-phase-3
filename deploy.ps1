@@ -53,4 +53,4 @@ $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
 Start-Process "https://render.com/deploy?repo=https://github.com/zareenarif/todo-app-phase-2"
 
 Write-Host "`n✓ Deployment page opened in your browser!" -ForegroundColor Green
-Write-Host "Follow the on-screen instructions to complete deployment.`n" -ForegroundColor White
+Write-Host "Follow the on-screen instructions to complete deployment." -ForegroundColor White
