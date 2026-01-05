@@ -2,7 +2,8 @@
 API dependencies - reusable dependency injection functions.
 """
 from fastapi import Depends, HTTPException, status
-from fastapi.security import HTTPBearer, HTTPAuthCredentials
+from fastapi.security import HTTPBearer
+from fastapi.security.http import HTTPAuthorizationCredentials
 from jose import JWTError
 from src.core.security import extract_user_id
 
@@ -12,7 +13,7 @@ security = HTTPBearer()
 
 
 async def get_current_user(
-    credentials: HTTPAuthCredentials = Depends(security)
+    credentials: HTTPAuthorizationCredentials = Depends(security)
 ) -> str:
     """
     Extract and verify JWT token, return user_id.

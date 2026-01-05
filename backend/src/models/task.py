@@ -2,7 +2,7 @@
 Task data model.
 """
 from sqlmodel import Field, SQLModel, Column
-from sqlalchemy.dialects.postgresql import UUID as PGUUID, JSONB
+from sqlalchemy import String, JSON, ForeignKey
 from datetime import datetime, date
 from uuid import UUID, uuid4
 from typing import Optional, List
@@ -34,7 +34,7 @@ class Task(SQLModel, table=True):
         description: Task description (optional, max 2000 chars)
         completed: Completion status (default: False)
         priority: Task priority (high/medium/low or None)
-        tags: Array of string tags (JSONB)
+        tags: Array of string tags (JSON)
         due_date: Task deadline date (optional)
         recurrence: Recurrence pattern (daily/weekly/monthly or None)
         created_at: Creation timestamp
@@ -44,11 +44,10 @@ class Task(SQLModel, table=True):
 
     id: UUID = Field(
         default_factory=uuid4,
-        sa_column=Column(PGUUID(as_uuid=True), primary_key=True)
+        sa_column=Column(String(36), primary_key=True)
     )
     user_id: UUID = Field(
-        sa_column=Column(PGUUID(as_uuid=True), nullable=False, index=True),
-        foreign_key="users.id"
+        sa_column=Column(String(36), ForeignKey("users.id"), nullable=False, index=True)
     )
     title: str = Field(max_length=200, nullable=False)
     description: Optional[str] = Field(default=None, max_length=2000)
@@ -56,7 +55,7 @@ class Task(SQLModel, table=True):
     priority: Optional[PriorityEnum] = Field(default=None)
     tags: List[str] = Field(
         default_factory=list,
-        sa_column=Column(JSONB, nullable=False, server_default='[]')
+        sa_column=Column(JSON, nullable=False)
     )
     due_date: Optional[date] = Field(default=None)
     recurrence: Optional[RecurrenceEnum] = Field(default=None)

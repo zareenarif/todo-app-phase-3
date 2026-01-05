@@ -52,8 +52,9 @@ htmlcov/
 
 # Environment variables
 .env
-.env.*
+.env.local
 !.env.example
+!.env.local.example
 
 # OS
 .DS_Store
