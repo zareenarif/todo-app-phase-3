@@ -111,12 +111,12 @@ export default function TaskCard({ task, onTaskUpdated }: TaskCardProps) {
 
   // View mode
   return (
-    <div className={`bg-white rounded-lg shadow p-4 border-l-4 ${
+    <div className={`bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-200 p-6 border-l-4 ${
       task.completed
-        ? 'border-green-500 bg-gray-50'
+        ? 'border-green-500 bg-gradient-to-r from-green-50 to-white'
         : isOverdue
-        ? 'border-red-500'
-        : 'border-indigo-500'
+        ? 'border-red-500 bg-gradient-to-r from-red-50 to-white'
+        : 'border-indigo-500 bg-white hover:border-indigo-600'
     }`}>
       <div className="flex items-start gap-3">
         {/* Completion status checkbox */}
@@ -133,8 +133,8 @@ export default function TaskCard({ task, onTaskUpdated }: TaskCardProps) {
         {/* Task content */}
         <div className="flex-grow min-w-0">
           {/* Title */}
-          <h3 className={`text-lg font-semibold ${
-            task.completed ? 'text-gray-500 line-through' : 'text-gray-900'
+          <h3 className={`text-xl font-bold ${
+            task.completed ? 'text-gray-400 line-through' : 'text-gray-900'
           }`}>
             {task.title}
           </h3>
@@ -201,41 +201,44 @@ export default function TaskCard({ task, onTaskUpdated }: TaskCardProps) {
         <div className="flex-shrink-0 flex gap-2">
           <button
             onClick={() => setIsEditing(true)}
-            className="px-3 py-1 text-sm font-medium text-indigo-600 hover:text-indigo-700 hover:bg-indigo-50 rounded-md transition-colors"
+            className="px-4 py-2 text-sm font-bold text-indigo-600 hover:text-white hover:bg-indigo-600 rounded-lg transition-all duration-200 border-2 border-indigo-600"
           >
-            Edit
+            ✏️ Edit
           </button>
           <button
             onClick={() => setShowDeleteConfirm(true)}
-            className="px-3 py-1 text-sm font-medium text-red-600 hover:text-red-700 hover:bg-red-50 rounded-md transition-colors"
+            className="px-4 py-2 text-sm font-bold text-red-600 hover:text-white hover:bg-red-600 rounded-lg transition-all duration-200 border-2 border-red-600"
           >
-            Delete
+            🗑️ Delete
           </button>
         </div>
       </div>
 
       {/* Delete confirmation modal */}
       {showDeleteConfirm && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg shadow-xl max-w-md w-full p-6 m-4">
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              Delete Task?
-            </h3>
-            <p className="text-gray-600 mb-6">
-              Are you sure you want to delete "{task.title}"? This action cannot be undone.
-            </p>
-            <div className="flex gap-3">
+        <div className="fixed inset-0 bg-black bg-opacity-60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 m-4 transform scale-100 animate-fade-in">
+            <div className="text-center mb-4">
+              <div className="text-6xl mb-4">🗑️</div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                Delete Task?
+              </h3>
+              <p className="text-gray-600 text-lg">
+                Are you sure you want to delete <strong>"{task.title}"</strong>? This action cannot be undone.
+              </p>
+            </div>
+            <div className="flex gap-3 mt-6">
               <button
                 onClick={handleDelete}
                 disabled={isDeleting}
-                className="flex-1 px-4 py-2 bg-red-600 text-white font-medium rounded-md hover:bg-red-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 px-6 py-3 bg-red-600 text-white font-bold rounded-xl hover:bg-red-700 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
-                {isDeleting ? 'Deleting...' : 'Delete'}
+                {isDeleting ? 'Deleting...' : 'Yes, Delete'}
               </button>
               <button
                 onClick={() => setShowDeleteConfirm(false)}
                 disabled={isDeleting}
-                className="flex-1 px-4 py-2 bg-gray-200 text-gray-700 font-medium rounded-md hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="flex-1 px-6 py-3 bg-gray-200 text-gray-700 font-bold rounded-xl hover:bg-gray-300 transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none"
               >
                 Cancel
               </button>

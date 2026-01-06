@@ -7,59 +7,90 @@ import Link from 'next/link';
 
 export default function LandingPage() {
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100">
-      <div className="max-w-2xl mx-auto px-4 text-center">
-        <h1 className="text-5xl font-bold text-gray-900 mb-4">
-          Welcome to Todo App
-        </h1>
-        <p className="text-xl text-gray-600 mb-8">
-          Organize your tasks, boost your productivity, and achieve your goals.
-        </p>
-
-        <div className="flex gap-4 justify-center">
-          <Link
-            href="/login"
-            className="px-6 py-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors"
-          >
-            Login
-          </Link>
-          <Link
-            href="/register"
-            className="px-6 py-3 bg-white text-indigo-600 font-semibold rounded-lg border-2 border-indigo-600 hover:bg-indigo-50 transition-colors"
-          >
-            Register
-          </Link>
-        </div>
-
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-6 bg-white rounded-lg shadow-md">
-            <div className="text-3xl mb-3">📝</div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              Create Tasks
-            </h3>
-            <p className="text-gray-600">
-              Easily add and organize your tasks with priorities and tags.
+    <div className="min-h-screen bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500">
+      {/* Hero Section */}
+      <div className="min-h-screen flex flex-col items-center justify-center px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          {/* Main Heading */}
+          <div className="mb-8 animate-fade-in">
+            <h1 className="text-6xl md:text-7xl font-extrabold text-white mb-6 drop-shadow-lg">
+              Todo App
+            </h1>
+            <p className="text-2xl md:text-3xl text-white/90 mb-4 font-light">
+              Your Personal Productivity Hub
+            </p>
+            <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto">
+              Organize tasks, set priorities, track deadlines, and achieve more with our powerful task management system.
             </p>
           </div>
 
-          <div className="p-6 bg-white rounded-lg shadow-md">
-            <div className="text-3xl mb-3">✅</div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              Track Progress
-            </h3>
-            <p className="text-gray-600">
-              Mark tasks as complete and watch your productivity grow.
-            </p>
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+            <Link
+              href="/register"
+              className="px-8 py-4 bg-white text-indigo-600 font-bold text-lg rounded-xl hover:bg-gray-100 transform hover:scale-105 transition-all duration-200 shadow-xl"
+            >
+              Get Started Free
+            </Link>
+            <Link
+              href="/login"
+              className="px-8 py-4 bg-indigo-500/30 backdrop-blur-sm text-white font-bold text-lg rounded-xl border-2 border-white/50 hover:bg-indigo-500/40 transform hover:scale-105 transition-all duration-200"
+            >
+              Sign In
+            </Link>
           </div>
 
-          <div className="p-6 bg-white rounded-lg shadow-md">
-            <div className="text-3xl mb-3">🔔</div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              Never Miss Deadlines
-            </h3>
-            <p className="text-gray-600">
-              Set due dates and recurring tasks to stay on top of everything.
-            </p>
+          {/* Features Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-20">
+            <div className="p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-200">
+              <div className="text-5xl mb-4">🎯</div>
+              <h3 className="text-xl font-bold text-white mb-3">
+                Set Priorities
+              </h3>
+              <p className="text-white/80">
+                High, medium, or low - organize tasks by importance and never miss what matters most.
+              </p>
+            </div>
+
+            <div className="p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-200">
+              <div className="text-5xl mb-4">🏷️</div>
+              <h3 className="text-xl font-bold text-white mb-3">
+                Tag & Organize
+              </h3>
+              <p className="text-white/80">
+                Use tags to categorize tasks - work, personal, urgent, or create your own custom tags.
+              </p>
+            </div>
+
+            <div className="p-8 bg-white/10 backdrop-blur-md rounded-2xl border border-white/20 hover:bg-white/20 transition-all duration-200">
+              <div className="text-5xl mb-4">📅</div>
+              <h3 className="text-xl font-bold text-white mb-3">
+                Track Deadlines
+              </h3>
+              <p className="text-white/80">
+                Set due dates and recurring tasks with automatic overdue detection to stay on schedule.
+              </p>
+            </div>
+          </div>
+
+          {/* Additional Features */}
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
+              <div className="text-3xl mb-2">✅</div>
+              <p className="text-white/90 text-sm font-semibold">Quick Toggle</p>
+            </div>
+            <div className="p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
+              <div className="text-3xl mb-2">🔍</div>
+              <p className="text-white/90 text-sm font-semibold">Smart Search</p>
+            </div>
+            <div className="p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
+              <div className="text-3xl mb-2">🔄</div>
+              <p className="text-white/90 text-sm font-semibold">Recurring Tasks</p>
+            </div>
+            <div className="p-4 bg-white/5 backdrop-blur-sm rounded-xl border border-white/10">
+              <div className="text-3xl mb-2">📱</div>
+              <p className="text-white/90 text-sm font-semibold">Mobile Ready</p>
+            </div>
           </div>
         </div>
       </div>
