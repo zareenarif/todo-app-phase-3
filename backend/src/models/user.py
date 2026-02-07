@@ -3,10 +3,8 @@ User reference model.
 Note: User table is managed by Better Auth.
 This model is for reference only (foreign key relationships).
 """
-from sqlmodel import SQLModel, Field, Column
-from sqlalchemy.dialects.postgresql import UUID as PGUUID
+from sqlmodel import SQLModel, Field
 from datetime import datetime
-from uuid import UUID
 from typing import Optional
 
 
@@ -15,7 +13,7 @@ class User(SQLModel, table=True):
     User entity with authentication.
 
     Attributes:
-        id: Unique user identifier (UUID)
+        id: Unique user identifier (UUID as string)
         email: User's email address (unique)
         name: User's display name (optional)
         password_hash: Hashed password for authentication
@@ -24,9 +22,7 @@ class User(SQLModel, table=True):
     """
     __tablename__ = "users"
 
-    id: UUID = Field(
-        sa_column=Column(PGUUID(as_uuid=True), primary_key=True)
-    )
+    id: str = Field(primary_key=True, max_length=36)
     email: str = Field(unique=True, index=True)
     name: Optional[str] = Field(default=None)
     password_hash: str

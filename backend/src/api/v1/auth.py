@@ -7,7 +7,7 @@ from pydantic import BaseModel, EmailStr
 from datetime import datetime, timedelta
 from jose import jwt
 from passlib.context import CryptContext
-from uuid import UUID, uuid4
+from uuid import uuid4
 
 from src.core.database import get_session
 from src.core.config import settings
@@ -47,11 +47,11 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
     return pwd_context.verify(plain_password, hashed_password)
 
 
-def create_access_token(user_id: UUID) -> str:
+def create_access_token(user_id: str) -> str:
     """Create JWT access token."""
     expire = datetime.utcnow() + timedelta(days=7)
     to_encode = {
-        "user_id": str(user_id),
+        "user_id": user_id,
         "exp": expire
     }
     encoded_jwt = jwt.encode(
@@ -84,7 +84,7 @@ async def register(
 
     # Create new user
     user = User(
-        id=uuid4(),
+        id=str(uuid4()),
         email=data.email,
         name=data.name,
         password_hash=hash_password(data.password),
@@ -155,7 +155,7 @@ async def get_current_user(
     user_id: str = Depends(lambda: "mock-user-id")  # TODO: Get from JWT
 ):
     """Get current user info."""
-    statement = select(User).where(User.id == UUID(user_id))
+    statement = select(User).where(User.id == user_id)
     user = session.exec(statement).first()
 
     if not user:
