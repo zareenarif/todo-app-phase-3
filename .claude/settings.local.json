@@ -147,7 +147,19 @@
       "Bash(python3:*)",
       "Bash(\"C:/Users/DC/Desktop/todo-app-phase03/backend/venv/Scripts/python.exe\" -c \"import sys,json; spec=json.load\\(sys.stdin\\); [print\\(f''{method.upper\\(\\)} {path}''\\) for path,ops in spec.get\\(''paths'',{}\\).items\\(\\) for method in ops if method in \\(''get'',''post'',''put'',''delete'',''patch''\\)]\")",
       "Bash(copy /b \"C:\\\\Users\\\\DC\\\\Desktop\\\\todo-app-phase03\\\\backend\\\\src\\\\api\\\\v1\\\\chat.py\" +,, \"C:\\\\Users\\\\DC\\\\Desktop\\\\todo-app-phase03\\\\backend\\\\src\\\\api\\\\v1\\\\chat.py\")",
-      "Bash(\"./venv/Scripts/uvicorn.exe\" src.main:app --reload --port 8000)"
+      "Bash(\"./venv/Scripts/uvicorn.exe\" src.main:app --reload --port 8000)",
+      "Bash(set \"RAILWAY_TOKEN=e7ed587b-15e2-4f4c-bbb1-e39458766679\")",
+      "Bash(set \"RAILWAY_TOKEN=RW:e7ed587b-15e2-4f4c-bbb1-e39458766679\")",
+      "Bash(powershell -Command \"$env:RAILWAY_TOKEN=''e7ed587b-15e2-4f4c-bbb1-e39458766679''; railway whoami 2>&1\")",
+      "Bash(cmd /c \"set RAILWAY_TOKEN=e7ed587b-15e2-4f4c-bbb1-e39458766679 && railway whoami\")",
+      "Bash(cmd /c \"set RAILWAY_TOKEN=e7ed587b-15e2-4f4c-bbb1-e39458766679&& railway whoami\")",
+      "Bash(script -qc \"railway login --browserless\" /dev/null)",
+      "Bash(winpty railway login --browserless)",
+      "Bash(winpty \"C:\\\\Users\\\\DC\\\\AppData\\\\Roaming\\\\npm\\\\railway.cmd\" login:*)",
+      "Bash(iconv:*)",
+      "Bash(nslookup:*)",
+      "Bash(TOKEN=\"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiOWZlODNmYWEtYzAyNS00NDIwLWFlYzktNzJhZjY4YjI5MzUyIiwiZXhwIjoxNzcxMTc4NjMyfQ.OfmlX9wtaKH-obif0_00h4zMbku_WmlRfMFbPA9DjmY\")",
+      "Bash(USER_ID=\"9fe83faa-c025-4420-aec9-72af68b29352\")"
     ]
   }
 }
